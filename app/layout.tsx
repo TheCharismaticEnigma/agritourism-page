@@ -4,6 +4,7 @@ import './globals.css';
 import { PropsWithChildren } from 'react';
 import ChakraProvider from '@/providers/ChakraProvider';
 import { Box } from '@chakra-ui/react';
+import Header from './(Header)/Header';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,11 +17,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className}`}>
         <ChakraProvider>
-          {/* <Header /> */}
+          <Header />
 
-          <main>
+          <main className=" mx-auto max-w-7xl">
             <Box>{children}</Box>
           </main>
 
