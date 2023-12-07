@@ -1,7 +1,5 @@
-import { Box, Heading, Flex } from '@chakra-ui/react';
-import NavBar from './NavBar';
-import heroBackground from '@/public/image_5.jpg';
-import { url } from 'inspector';
+import heroBackground from '@/public/image_7.jpg';
+import { Box, Flex, Heading } from '@chakra-ui/react';
 import Image from 'next/image';
 
 const Header = () => {
@@ -14,7 +12,6 @@ const Header = () => {
         maxHeight={'30rem'}
         overflow={'hidden'}
         width={'100%'}
-        border={'1px solid black'}
         className="md:h-3/5"
       >
         <Image
@@ -26,17 +23,25 @@ const Header = () => {
 
       <Flex
         position={'absolute'}
-        top={'20%'}
+        top={'25%'}
         left={'15%'}
         direction={'column'}
         gap={6}
         width={'70%'}
         py={8}
         px={2}
-        className="rounded-2xl bg-gradient-to-bl from-[#00000033] to-[#00000022] backdrop-saturate-100 backdrop-blur-[4px]"
+        className="rounded-2xl bg-gradient-to-t from-[#00000033] via-[#00000074] to-[#00000033] backdrop-saturate-200 backdrop-blur-[15px]"
       >
-        <Heading textAlign={'center'} color={'gray.300'}>
-          Discover the Charm of Rural Life: Welcome to Agspert Agrotourism!
+        <Heading
+          fontSize={{
+            base: 'large',
+            sm: 'x-large',
+            md: 'xxx-large',
+          }}
+          textAlign={'center'}
+          color={'#4FFFB0'}
+        >
+          Discover the Charm of Rural Life: <br /> Agspert Agrotourism!
         </Heading>
 
         <Heading
