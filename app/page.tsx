@@ -3,6 +3,7 @@ import Image from 'next/image';
 import AboutSection from './(MainContent)/AboutSection';
 import CardGridSection from './(MainContent)/CardGridSection';
 import InstructionSection from './(MainContent)/InstructionSection';
+import SocialsSection from './(MainContent)/SocialsSection';
 
 export default function Home() {
   return (
@@ -12,6 +13,8 @@ export default function Home() {
       <CardGridSection />
 
       <InstructionSection />
+
+      <SocialsSection />
     </Flex>
   );
 }
