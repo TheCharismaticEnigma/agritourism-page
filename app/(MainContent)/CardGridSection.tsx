@@ -82,7 +82,7 @@ const CardGrid = () => {
         sm: 'repeat(1,1fr)',
         md: 'repeat(3,1fr)',
       }}
-      gap={6}
+      gap={8}
     >
       {gridData.map(({ content, imageAlt, imageSrc }, index) => {
         const colSpanData =
@@ -95,7 +95,7 @@ const CardGrid = () => {
             : 1;
 
         return (
-          <GridItem key={content} w="100%" colSpan={colSpanData}>
+          <GridItem key={content} w="100%" h="100%" colSpan={colSpanData}>
             <CardGridItem
               imageSrc={imageSrc}
               imageAlt={imageAlt}
