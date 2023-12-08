@@ -4,7 +4,7 @@ import scenary from '@/public/image_2.jpg';
 
 const AboutSection = () => {
   return (
-    <Box className="p-3 rounded-t-3xl">
+    <Box className="mt-3 p-3 rounded-t-3xl">
       <Flex
         width={{
           base: '100%',
@@ -16,10 +16,7 @@ const AboutSection = () => {
           sm: 'column',
           md: 'row',
         }}
-        alignItems={{
-          md: 'center',
-        }}
-        gap={6}
+        gap={5}
         height={'100%'}
         mx={'auto'}
       >
@@ -29,8 +26,8 @@ const AboutSection = () => {
             sm: 'none',
             md: 'block',
           }}
-          height={'20rem'}
-          className="rounded-2xl overflow-hidden"
+          alignSelf={'stretch'}
+          className="rounded-sm overflow-hidden "
         >
           <Image
             src={scenary}
@@ -50,21 +47,22 @@ const AboutSectionContent = () => {
     <Flex
       direction={'column'}
       width={'auto'}
-      gap={6}
+      gap={8}
       maxWidth={{
         base: '100%',
         sm: '100%',
-        md: '60%',
+        md: '55%',
+        lg: '60%',
       }}
       justifyContent={'space-between'}
       alignItems={'center'}
-      className="rounded-2xl py-2 border-1 border-transparent bg-gradient-to-tr  from-[#00000032] to-green-900 backdrop-saturate-100 backdrop-blur-sm "
+      className="rounded-md py-3 shadow-md shadow-[#00000025]"
     >
       <Heading
         as={'h3'}
         fontSize={'xxx-large'}
         textAlign={'center'}
-        color={'blackAlpha.700'}
+        color={'#22c35e'}
       >
         Our Mission
       </Heading>
@@ -85,7 +83,7 @@ const AboutSectionContent = () => {
         farm life, sustainability, and the joy of shared experiences
       </Text>
 
-      <Button size={'lg'} colorScheme="green" color={'black'}>
+      <Button size={'lg'} colorScheme="whatsapp" color={'blackAlpha.800'}>
         Mother Nature... Here I Come
       </Button>
     </Flex>
