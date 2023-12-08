@@ -1,4 +1,4 @@
-import heroBackground from '@/public/image_7.jpg';
+import heroBackground from '@/public/nature.jpg';
 import { Box } from '@chakra-ui/react';
 import Image from 'next/image';
 import NavBar from './NavBar';
@@ -6,10 +6,7 @@ import HeroContent from './HeroContent';
 
 const Header = () => {
   return (
-    <Box
-      className=" mx-auto max-w-7xl rounded-b-3xl overflow-hidden"
-      position={'relative'}
-    >
+    <Box className=" mx-auto max-w-7xl  overflow-hidden" position={'relative'}>
       <HeroBackground />
 
       <NavBar />

@@ -4,18 +4,14 @@ const HeroContent = () => {
   return (
     <Flex
       position={'absolute'}
-      top={{
-        base: '30%',
-        sm: '30%',
-        md: '25%',
-      }}
+      top={'30%'}
       left={'15%'}
       direction={'column'}
       gap={6}
       width={'70%'}
       py={8}
       px={2}
-      className="rounded-2xl bg-gradient-to-t from-[#00000033] via-[#00000074] to-[#00000033] backdrop-saturate-200 backdrop-blur-[15px]"
+      className="rounded-2xl bg-gradient-to-t from-[#00000033] via-[#00000074] to-[#00000033] backdrop-saturate-200 backdrop-blur-[25px]"
     >
       <Heading
         fontSize={{
@@ -31,7 +27,7 @@ const HeroContent = () => {
 
       <Heading
         as={'h3'}
-        color={'whiteAlpha.800'}
+        color={'whiteAlpha.900'}
         className="max-md:hidden mx-auto "
         textAlign={'center'}
         fontSize={'large'}

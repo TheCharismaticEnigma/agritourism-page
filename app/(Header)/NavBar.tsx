@@ -20,17 +20,19 @@ const NavBar = () => {
       top={0}
       left={0}
       width={'100%'}
-      className=" text-white px-6 py-3"
+      className="rounded-b-3xl  shadow-gray-400 shadow-inner px-4 md:px-8 py-3 bg-gradient-to-br from-[#00000022] to-[#00000033] backdrop-saturate-200 backdrop-blur-[20px]"
     >
       <Text
-        color={'whiteAlpha.900'}
+        color={'green.900'}
         fontSize={{
           base: '1rem',
           sm: '1rem',
           md: '1.5rem',
         }}
+        fontWeight={'bold'}
+        fontFamily={'cursive'}
       >
-        Company
+        AGSPERT
       </Text>
 
       <Flex
@@ -43,7 +45,6 @@ const NavBar = () => {
         }}
         justifyContent={'space-around'}
         gap={5}
-        className="border-2 border-transparent rounded-lg bg-gradient-to-br from-[#00000022] to-[#00000033]  backdrop-blur-[3px] px-3 py-2 "
       >
         {links.map(({ label, href }) => (
           <NavLink key={label} label={label} href={href} />
@@ -68,7 +69,7 @@ const NavLink = ({ label, href }: { label: string; href: string }) => {
   return (
     <Link
       href={href}
-      className="text-green-900 font-semibold hover:text-gray-900 text-md"
+      className="text-black hover:text-green-900 font-semibold  text-sm md:text-lg"
     >
       {label}
     </Link>
