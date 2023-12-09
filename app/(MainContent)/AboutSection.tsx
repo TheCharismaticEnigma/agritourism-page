@@ -45,6 +45,7 @@ const AboutSection = () => {
 const AboutSectionContent = () => {
   return (
     <Flex
+      id="about"
       direction={'column'}
       width={'auto'}
       gap={8}

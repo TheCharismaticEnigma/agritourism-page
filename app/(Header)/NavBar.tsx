@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Tag, Text } from '@chakra-ui/react';
+import { Button, Flex, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 interface NavLink {
   label: string;
@@ -8,8 +8,8 @@ interface NavLink {
 const NavBar = () => {
   const links: NavLink[] = [
     { label: 'Home', href: '#' },
-    { label: 'About Us', href: '#' },
-    { label: 'Contact', href: '#' },
+    { label: 'About Us', href: '#about' },
+    { label: 'Contact', href: '#contact' },
   ];
 
   return (

@@ -5,7 +5,10 @@ import SocialsSection from '../(MainContent)/SocialsSection';
 
 const Footer = () => {
   return (
-    <Box className="text-black mt-16 mx-auto max-w-7xl overflow-hidden bg-gradient-to-tr from-[#00b894] to-[#00b89480]">
+    <Box
+      id="contact"
+      className="text-black mt-16 mx-auto max-w-7xl overflow-hidden bg-gradient-to-tr from-[#00b894] to-[#00b89480]"
+    >
       <Flex
         direction={{
           base: 'column',
