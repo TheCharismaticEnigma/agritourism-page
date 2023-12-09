@@ -1,4 +1,4 @@
-## [`AGRITOURISM BUSINESS LANDING PAGE`](https://alemano-assignment-bqp6.vercel.app/)  (Deployed w/ Vercel)
+## [`AGRITOURISM BUSINESS LANDING PAGE`](https://agritourism-page.vercel.app/)  (Deployed w/ Vercel)
 
 
 `This is a simple landing page for a company enlightening the audience about the realm of agritourism, its benefits, and the process. `
