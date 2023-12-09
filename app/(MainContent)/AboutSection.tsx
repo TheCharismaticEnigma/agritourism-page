@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react';
+import { Box, Button, Link, Flex, Heading, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 import scenary from '@/public/image_2.jpg';
 
@@ -84,9 +84,16 @@ const AboutSectionContent = () => {
         farm life, sustainability, and the joy of shared experiences
       </Text>
 
-      <Button size={'lg'} colorScheme="whatsapp" color={'blackAlpha.800'}>
-        Mother Nature... Here I Come
-      </Button>
+      <Link href={'#contact'}>
+        <Button
+          pointerEvents={'inherit'}
+          size={'lg'}
+          colorScheme="whatsapp"
+          color={'blackAlpha.800'}
+        >
+          Mother Nature... Here I Come
+        </Button>
+      </Link>
     </Flex>
   );
 };
