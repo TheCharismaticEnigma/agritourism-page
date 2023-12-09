@@ -11,12 +11,12 @@ export interface CardGridItemProps {
 
 const CardGridItem = ({ imageSrc, imageAlt, content }: CardGridItemProps) => {
   return (
-    <Flex
-      height={'100%'}
-      direction={'column'}
-      className="rounded-2xl overflow-hidden "
-    >
-      <Box maxHeight={'20rem'} width={'100%'} className="overflow-hidden">
+    <Flex height={'100%'} direction={'column'} className="p-1 ">
+      <Box
+        maxHeight={'20rem'}
+        width={'100%'}
+        className="overflow-hidden rounded-t-sm"
+      >
         <Image
           src={imageSrc}
           alt={imageAlt}
@@ -25,7 +25,7 @@ const CardGridItem = ({ imageSrc, imageAlt, content }: CardGridItemProps) => {
       </Box>
 
       <Text
-        className="flex-1 px-3 py-5 bg-gradient-to-bl from-green-800  to-[#00000033] backdrop-blur-sm"
+        className="flex-1 rounded-b-sm px-3 py-5 shadow-md shadow-[#00000025]"
         textAlign={'center'}
         color={'black'}
         fontWeight={'semibold'}

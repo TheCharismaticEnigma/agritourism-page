@@ -5,6 +5,7 @@ import { PropsWithChildren } from 'react';
 import ChakraProvider from '@/providers/ChakraProvider';
 import { Box } from '@chakra-ui/react';
 import Header from './(Header)/Header';
+import Footer from './(Footer)/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,7 +26,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
             <Box>{children}</Box>
           </main>
 
-          {/* Footer */}
+          <Footer />
         </ChakraProvider>
       </body>
     </html>
