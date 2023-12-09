@@ -52,7 +52,7 @@ const FooterContent = () => {
       gap={6}
     >
       <Heading
-        color={'blackAlpha.700'}
+        color={'blackAlpha.800'}
         textAlign={'center'}
         textTransform={'capitalize'}
         fontSize={'xx-large'}

@@ -22,7 +22,7 @@ const SocialsSection = () => {
     <Flex direction={'column'} alignItems={'center'} gap={6} p={'1'}>
       <Heading
         textTransform={'capitalize'}
-        color={'blackAlpha.700'}
+        color={'blackAlpha.800'}
         fontSize={'xx-large'}
       >
         Connect With Us
