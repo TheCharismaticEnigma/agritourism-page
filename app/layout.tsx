@@ -22,7 +22,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <ChakraProvider>
           <Header />
 
-          <main className=" mx-auto max-w-7xl">
+          <main>
             <Box>{children}</Box>
           </main>
 

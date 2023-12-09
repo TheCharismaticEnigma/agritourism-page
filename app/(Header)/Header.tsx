@@ -6,7 +6,7 @@ import HeroContent from './HeroContent';
 
 const Header = () => {
   return (
-    <Box className=" mx-auto max-w-7xl  overflow-hidden" position={'relative'}>
+    <Box className="overflow-hidden" position={'relative'}>
       <HeroBackground />
 
       <NavBar />

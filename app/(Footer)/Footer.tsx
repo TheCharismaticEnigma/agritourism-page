@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <Box
       id="contact"
-      className="text-black mt-16 mx-auto max-w-7xl overflow-hidden bg-gradient-to-tr from-[#00b894] to-[#00b89480]"
+      className="text-black mt-16 overflow-hidden bg-gradient-to-tr from-[#00b894] to-[#00b89480]"
     >
       <Flex
         direction={{
