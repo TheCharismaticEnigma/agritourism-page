@@ -7,9 +7,9 @@ import HeroContent from './HeroContent';
 const Header = () => {
   return (
     <Box className="overflow-hidden" position={'relative'}>
-      <HeroBackground />
-
       <NavBar />
+
+      <HeroBackground />
 
       <HeroContent />
     </Box>

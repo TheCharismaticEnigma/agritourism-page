@@ -16,13 +16,13 @@ const NavBar = () => {
 
   return (
     <Flex
+      position={'fixed'}
+      top={0}
+      zIndex={100}
       justifyContent={'space-between'}
       alignItems={'center'}
-      position={'absolute'}
-      top={0}
-      left={0}
       width={'100%'}
-      className="rounded-b-3xl  shadow-gray-400 shadow-inner px-4 md:px-8 py-3 bg-gradient-to-tl from-[#00000022] to-[#00000043] backdrop-saturate-200 backdrop-blur-[20px]"
+      className="rounded-b-3xl shadow-gray-400 shadow-inner px-4 md:px-8 py-3 bg-gradient-to-tl from-[#00000022] to-[#00000043] backdrop-saturate-200 backdrop-blur-[20px]"
     >
       <Link href={'#'} className="bg-inherit">
         <Image className="bg-red" width={180} src={logo} alt="Agspeak Logo" />
