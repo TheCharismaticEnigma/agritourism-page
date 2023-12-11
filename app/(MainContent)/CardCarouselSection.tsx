@@ -1,13 +1,12 @@
 'use client';
 
-import { Box, Flex, Heading, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react';
 import himachal from '@/public/carousel/himachal.jpg';
 import kashmir from '@/public/carousel/kashmir.jpg';
 import rajhasthan from '@/public/carousel/rajhasthan.jpg';
 import nashik from '@/public/carousel/nashik.jpg';
 import Image, { StaticImageData } from 'next/image';
 import { useEffect } from 'react';
-import gsap from 'gsap';
 
 interface CarouselItem {
   source: StaticImageData;
@@ -62,24 +61,35 @@ const CardCarouselSection = () => {
         height={'100%'}
         mx={'auto'}
       >
-        <Heading
-          textAlign={'center'}
-          textTransform={'capitalize'}
-          fontWeight={'500'}
-          fontSize={'xxx-large'}
+        <Flex
+          direction={'column'}
+          alignItems={'center'}
+          justifyContent={'space-around'}
           width={{
             sm: '100%',
             base: ' 100%',
             md: '35%',
           }}
+          pt={{
+            md: 5,
+          }}
         >
-          Your gateway to <HeadingSpan content="Adventure" /> and
-          <HeadingSpan content="Adrenaline!" />
-          {/* <progress className="mt-12 progress progress-secondary w-full"></progress> */}
-        </Heading>
+          <Heading
+            textAlign={'center'}
+            textTransform={'capitalize'}
+            fontWeight={'500'}
+            fontSize={'xxx-large'}
+          >
+            Your gateway to <HeadingSpan content="Adventure" /> and
+            <HeadingSpan content="Adrenaline!" />
+            <progress className="mt-4 progress progress-secondary w-full"></progress>
+          </Heading>
+
+          <ActionButton />
+        </Flex>
 
         <Box overflow={'hidden'} className="flex-1">
-          <div className="carousel carousel-center w-full p-4 space-x-4 bg-neutral rounded-box">
+          <div className="carousel carousel-center w-full p-4 space-x-4">
             {sources.map(({ source, state }, index) => (
               <CarouselItem key={state} source={source} state={state} />
             ))}
@@ -90,19 +100,45 @@ const CardCarouselSection = () => {
   );
 };
 
+const ActionButton = () => {
+  return (
+    <button className="btn hover:btn-accent hover:scale-105 w-[15rem]">
+      Get Started
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-6 w-6"
+        fill="red"
+        viewBox="0 0 24 24"
+        stroke="red"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+        />
+      </svg>
+    </button>
+  );
+};
+
 const CarouselItem = ({ source, state }: CarouselItem) => {
   return (
     <Box
       overflow={'hidden'}
       cursor={'pointer'}
       position={'relative'}
-      className="carousel-item rounded-box w-[300px] h-[350px]"
+      transition={'all 300ms ease-out'}
+      _hover={{
+        transform: 'scale(1.025)',
+      }}
+      className="carousel-item rounded-box w-[300px] h-[350px] shadow-sm shadow-gray-900 "
     >
       <Image
         src={source}
         alt="Enchanting Nature Landscape"
         priority
-        className={`object-cover object-bottom w-full h-full`}
+        className={`object-cover object-bottom w-full h-full pointer-events-none`}
       />
 
       <Text
