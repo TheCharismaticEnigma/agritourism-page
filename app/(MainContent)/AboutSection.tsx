@@ -4,7 +4,7 @@ import scenary from '@/public/image_2.jpg';
 
 const AboutSection = () => {
   return (
-    <Box className="mt-3 p-3 rounded-t-3xl">
+    <Box className="mt-3 p-3">
       <Flex
         width={{
           base: '100%',
