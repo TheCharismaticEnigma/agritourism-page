@@ -1,5 +1,5 @@
 import logo from '@/public/logo.webp';
-import { Button, Flex } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 interface NavLink {
@@ -22,7 +22,7 @@ const NavBar = () => {
       justifyContent={'space-between'}
       alignItems={'center'}
       width={'100%'}
-      className="rounded-b-3xl shadow-gray-400 shadow-inner px-4 md:px-8 py-3 bg-gradient-to-tl from-[#00000022] to-[#00000043] backdrop-saturate-200 backdrop-blur-[20px]"
+      className="rounded-b-3xl px-4 md:px-8 py-3 bg-gradient-to-tl from-[#00000062] to-[#00000043] backdrop-blur-[8px]"
     >
       <Link href={'#'} className="bg-inherit">
         <Image className="bg-red" width={180} src={logo} alt="Agspeak Logo" />
@@ -45,17 +45,6 @@ const NavBar = () => {
           <NavLink key={label} label={label} href={href} />
         ))}
       </Flex>
-
-      <Button
-        size={{
-          base: 'sm',
-          sm: 'sm',
-          md: 'md',
-        }}
-        colorScheme="green"
-      >
-        Login
-      </Button>
     </Flex>
   );
 };
@@ -64,7 +53,7 @@ const NavLink = ({ label, href }: { label: string; href: string }) => {
   return (
     <Link
       href={href}
-      className="text-black hover:text-green-900 font-semibold  text-sm md:text-lg"
+      className="text-gray-100 transition-all duration-200 hover:text-black hover:bg-gradient-to-tr from-green-200 to-[#72c7a1] px-2 md:px-3 py-1 rounded-md text-md md:text-xl inline-block"
     >
       {label}
     </Link>

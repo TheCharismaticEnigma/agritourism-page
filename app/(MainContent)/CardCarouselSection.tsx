@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Link, Text } from '@chakra-ui/react';
 import himachal from '@/public/carousel/himachal.jpg';
 import kashmir from '@/public/carousel/kashmir.jpg';
 import rajhasthan from '@/public/carousel/rajhasthan.jpg';
@@ -65,6 +65,7 @@ const CardCarouselSection = () => {
           direction={'column'}
           alignItems={'center'}
           justifyContent={'space-around'}
+          gap={5}
           width={{
             sm: '100%',
             base: ' 100%',
@@ -102,23 +103,25 @@ const CardCarouselSection = () => {
 
 const ActionButton = () => {
   return (
-    <button className="btn hover:btn-accent hover:scale-105 w-[15rem]">
-      Get Started
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-6 w-6"
-        fill="red"
-        viewBox="0 0 24 24"
-        stroke="red"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-        />
-      </svg>
-    </button>
+    <Link href="#contact">
+      <button className="btn hover:btn-accent hover:scale-105 w-[15rem] pointer-events-inherit">
+        Get Started
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6"
+          fill="red"
+          viewBox="0 0 24 24"
+          stroke="red"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+          />
+        </svg>
+      </button>
+    </Link>
   );
 };
 
