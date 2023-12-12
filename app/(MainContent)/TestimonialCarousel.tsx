@@ -19,46 +19,29 @@ interface TestimonialCardData {
 
 const TestimonialCarousel = () => {
   useEffect(() => {
-    const testimonials = document.querySelectorAll('.testimonial-card');
+    const carouselItemCount = 3;
+    const container = document.querySelector('.carousel-wrapper');
 
     const timeline = gsap.timeline();
-    gsap.set(testimonials[0], {
-      background:
-        ' linear-gradient(90deg, rgba(105,168,103,1) 0%, rgba(126,201,154,1) 35%, rgba(81,184,146,1) 100%)',
-    });
+    timeline.set(container, { translateX: 0, duration: 0 });
 
-    testimonials.forEach((testimonial, index) => {
-      if (index === 0) {
-        timeline.to(testimonial, {
-          transform: 'translateX(0)',
-          duration: 0,
-        });
-        return;
-      }
-
+    for (let i = 1; i < carouselItemCount; i++) {
       timeline.fromTo(
-        testimonial,
-        {
-          transform: 'translateX(0)',
-        },
-        {
-          transform: `translateX(-${index * 100}%)`,
-          duration: 2 + parseInt(`${index / 2}`),
-          background:
-            ' linear-gradient(90deg, rgba(105,168,103,1) 0%, rgba(126,201,154,1) 35%, rgba(81,184,146,1) 100%)',
-          ease: 'power2.out',
-          delay: 3,
-        }
+        container,
+        { translateX: `-${(i - 1) * 100}%` },
+        { translateX: `-${i * 100}%`, duration: 2, delay: 2 }
       );
-    });
+    }
 
-    timeline.repeat(-1).repeatDelay(3);
-
-    return () => {
-      testimonials.forEach((item) =>
-        gsap.set(item, { transform: 'translateX(0)', opacity: '1' })
+    for (let i = carouselItemCount - 1; i > 0; i--) {
+      timeline.fromTo(
+        container,
+        { translateX: `-${i * 100}%` },
+        { translateX: `-${(i - 1) * 100}%`, duration: 2, delay: 2 }
       );
-    };
+    }
+
+    timeline.repeat(-1).repeatDelay(1);
   }, []);
 
   const cardData: TestimonialCardData[] = [
@@ -88,22 +71,23 @@ const TestimonialCarousel = () => {
   return (
     <Flex
       width={'100%'}
-      className="shadow-sm shadow-green-700 rounded-md"
+      className="shadow-md shadow-gray-300 rounded-md"
       overflow={'hidden'}
-      //   overflowX={'scroll'}
     >
-      {cardData.map(({ data, heading, location, name, text }) => (
-        <TestimonialCard
-          key={heading}
-          cardContent={{
-            data,
-            heading,
-            location,
-            name,
-            text,
-          }}
-        />
-      ))}
+      <Flex className="carousel-wrapper" width={'100%'} height={'100%'}>
+        {cardData.map(({ data, heading, location, name, text }) => (
+          <TestimonialCard
+            key={heading}
+            cardContent={{
+              data,
+              heading,
+              location,
+              name,
+              text,
+            }}
+          />
+        ))}
+      </Flex>
     </Flex>
   );
 };
@@ -116,12 +100,7 @@ const TestimonialCard = ({
   const { data: imageData, heading, location, name, text } = cardContent;
 
   return (
-    <Box
-      className="testimonial-card"
-      flexShrink={'0'}
-      width={'100%'}
-      padding={5}
-    >
+    <Box flexShrink={'0'} width={'100%'} padding={5}>
       <Flex direction={'row'} gap={5}>
         <Box
           height={'25rem'}
