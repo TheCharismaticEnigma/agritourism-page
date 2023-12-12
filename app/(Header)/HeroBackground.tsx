@@ -20,7 +20,7 @@ const HeroBackground = () => {
 
     items.forEach((item, index) => {
       if (index === 0) {
-        timeline.to(item, { transform: 'translateY(0)', duration: 0 });
+        timeline.set(item, { transform: 'translateY(0)' });
         return;
       }
 
@@ -36,14 +36,14 @@ const HeroBackground = () => {
         {
           transform: `translateY(-${index * 30}rem)`,
           opacity: 1,
-          duration: 2.5 + parseInt(`${index / 2}`),
+          duration: 2 + parseInt(`${index / 2}`),
           ease: 'power2.out',
-          delay: 4,
+          delay: 2,
         }
       );
     });
 
-    timeline.repeat(-1).repeatDelay(5);
+    timeline.repeat(-1).repeatDelay(2);
 
     return () => {
       items.forEach((item) => gsap.set(item, { transform: 'translateY(0)' }));

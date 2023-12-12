@@ -15,7 +15,7 @@ const CardGridItem = ({ imageSrc, imageAlt, content }: CardGridItemProps) => {
       <Box
         maxHeight={'20rem'}
         width={'100%'}
-        className="overflow-hidden rounded-t-sm"
+        className="overflow-hidden rounded-t-xl"
       >
         <Image
           src={imageSrc}
@@ -25,7 +25,7 @@ const CardGridItem = ({ imageSrc, imageAlt, content }: CardGridItemProps) => {
       </Box>
 
       <Text
-        className="flex-1 rounded-b-sm px-3 py-5 shadow-md shadow-[#00000025]"
+        className="flex-1 rounded-b-xl px-3 py-5 shadow-md shadow-[#00000025]"
         textAlign={'center'}
         color={'black'}
         fontWeight={'semibold'}

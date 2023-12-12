@@ -1,6 +1,12 @@
 import { Flex, Box, Text, Heading } from '@chakra-ui/react';
 import Image from 'next/image';
 import swingingGirl from '@/public/swinging_girl.jpg';
+import {
+  BanknotesIcon,
+  MagnifyingGlassIcon,
+  BuildingStorefrontIcon,
+} from '@heroicons/react/24/outline';
+import { ElementType } from 'react';
 
 const InstructionSection = () => {
   return (
@@ -11,7 +17,7 @@ const InstructionSection = () => {
         md: '95%',
       }}
       mx={'auto'}
-      direction={'row'}
+      alignItems={'center'}
       p={3}
       mt={5}
       className="shadow-md shadow-[#00000025]"
@@ -50,24 +56,28 @@ const ImageContainer = () => {
 interface Instruction {
   heading: string;
   details: string;
+  Icon: ElementType;
 }
 
 const InstructionsContainer = () => {
   const instructions: Instruction[] = [
     {
       heading: 'Find a destination',
+      Icon: MagnifyingGlassIcon,
       details:
         'Embark on your journey to discover your dream destination, where adventure and thrill await.',
     },
 
     {
       heading: 'Make Payment',
+      Icon: BanknotesIcon,
       details:
         'We offer a variety of payment methods to meet your preferences and ensure a hassle-free transaction.',
     },
 
     {
       heading: 'Explore Destination',
+      Icon: BuildingStorefrontIcon,
       details:
         'Be immersed in enchanting tapestry of sights and sounds, as you wind your way through the ancient sheets.',
     },
@@ -81,6 +91,7 @@ const InstructionsContainer = () => {
           width={'90%'}
           mx={'auto'}
           color={'green.600'}
+          textAlign={{ base: 'left', sm: 'left', md: 'center' }}
         >
           How It Works ?
         </Heading>
@@ -92,8 +103,13 @@ const InstructionsContainer = () => {
           width={'90%'}
           className="flex-1 mx-auto"
         >
-          {instructions.map(({ details, heading }, index) => (
-            <InstructionTab key={heading} details={details} heading={heading} />
+          {instructions.map(({ details, heading, Icon }, index) => (
+            <InstructionTab
+              Icon={Icon}
+              key={heading}
+              details={details}
+              heading={heading}
+            />
           ))}
         </Flex>
       </Flex>
@@ -101,17 +117,31 @@ const InstructionsContainer = () => {
   );
 };
 
-const InstructionTab = ({ details, heading }: Instruction) => {
+const InstructionTab = ({ details, heading, Icon }: Instruction) => {
   return (
-    <Flex direction={'column'} gap={3}>
-      <Heading
-        color={'blackAlpha.800'}
-        fontSize={'x-large'}
-        textTransform={'capitalize'}
+    <Flex
+      gap={10}
+      alignItems={'center'}
+      className="hover:shadow-inner hover:shadow-green-100 py-3 px-4 rounded-lg"
+    >
+      <Box
+        p={'1.5'}
+        width={'3.5rem'}
+        className="rounded-lg shadow-sm shadow-gray-500"
       >
-        {heading}
-      </Heading>
-      <Text>{details}</Text>
+        <Icon />
+      </Box>
+
+      <Flex direction={'column'} gap={3}>
+        <Heading
+          color={'blackAlpha.800'}
+          fontSize={'x-large'}
+          textTransform={'capitalize'}
+        >
+          {heading}
+        </Heading>
+        <Text>{details}</Text>
+      </Flex>
     </Flex>
   );
 };
