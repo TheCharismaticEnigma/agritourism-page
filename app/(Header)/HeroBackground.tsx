@@ -24,11 +24,14 @@ const HeroBackground = () => {
         return;
       }
 
+      const initialPosition =
+        index % 2 === 0 ? `translateY(-${index * 30}rem)` : 'translateY(0)';
+
       timeline.fromTo(
         item,
         {
           opacity: 0,
-          transform: 'translateY(0)',
+          transform: initialPosition,
         },
         {
           transform: `translateY(-${index * 30}rem)`,

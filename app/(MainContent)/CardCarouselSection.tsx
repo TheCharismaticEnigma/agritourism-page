@@ -41,7 +41,7 @@ const CardCarouselSection = () => {
   ];
 
   return (
-    <Box className="mt-5 p-3 ">
+    <Box className="p-3 ">
       <Flex
         width={{
           base: '100%',
