@@ -1,11 +1,12 @@
 'use client';
 
-import { Box, Button, Flex, Heading, Link, Text } from '@chakra-ui/react';
+import { Box, Flex, Heading, Link, Text } from '@chakra-ui/react';
 import himachal from '@/public/carousel/himachal.jpg';
 import kashmir from '@/public/carousel/kashmir.jpg';
 import rajhasthan from '@/public/carousel/rajhasthan.jpg';
 import nashik from '@/public/carousel/nashik.jpg';
 import Image, { StaticImageData } from 'next/image';
+import gsap from 'gsap';
 import { useEffect } from 'react';
 
 interface CarouselItem {
@@ -17,20 +18,20 @@ const CardCarouselSection = () => {
   useEffect(() => {
     const carousel = document.querySelector('.carousel');
 
-    if (carousel?.children) {
-      const items = carousel.children;
+    const timeline = gsap.timeline();
+    timeline.delay(1);
 
-      for (let i = 0; i < items.length; i++) {
-        const item = items[i];
-        item.addEventListener('click', () => {
-          item.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center',
-            inline: 'center',
-          });
-        });
-      }
-    }
+    timeline.fromTo(
+      carousel,
+      { translateX: '0%' },
+      { translateX: '-100%', duration: 6 }
+    );
+    timeline.fromTo(
+      carousel,
+      { translateX: '-100%' },
+      { translateX: '0%', duration: 6 }
+    );
+    timeline.repeat(-1);
   }, []);
 
   const sources: CarouselItem[] = [
@@ -89,8 +90,8 @@ const CardCarouselSection = () => {
           <ActionButton />
         </Flex>
 
-        <Box overflow={'hidden'} className="flex-1">
-          <div className="carousel carousel-center w-full p-4 space-x-4">
+        <Box className="flex-1" overflow={'hidden'}>
+          <div className="carousel carousel-center w-full p-4 space-x-4 overflow-visible">
             {sources.map(({ source, state }, index) => (
               <CarouselItem key={state} source={source} state={state} />
             ))}
@@ -129,7 +130,6 @@ const CarouselItem = ({ source, state }: CarouselItem) => {
   return (
     <Box
       overflow={'hidden'}
-      cursor={'pointer'}
       position={'relative'}
       transition={'all 300ms ease-out'}
       _hover={{
