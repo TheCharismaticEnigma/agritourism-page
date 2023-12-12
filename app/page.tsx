@@ -3,6 +3,7 @@ import AboutSection from './(MainContent)/AboutSection';
 import CardGridSection from './(MainContent)/CardGridSection';
 import InstructionSection from './(MainContent)/InstructionSection';
 import CardCarouselSection from './(MainContent)/CardCarouselSection';
+import TestimonialSection from './(MainContent)/TestimonialSection';
 
 export default function Home() {
   return (
@@ -14,6 +15,8 @@ export default function Home() {
       <CardGridSection />
 
       <InstructionSection />
+
+      <TestimonialSection />
     </Flex>
   );
 }
