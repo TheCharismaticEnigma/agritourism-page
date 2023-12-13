@@ -10,25 +10,56 @@ import {
   Input,
   Textarea,
 } from '@chakra-ui/react';
+import axios from 'axios';
 import { FormEvent, LegacyRef, useRef, useState } from 'react';
+
+interface UserDetails {
+  name: string;
+  email: string;
+  message: string;
+}
 
 const EnquiryForm = () => {
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+
   const [invalidName, setInvalidName] = useState(false);
   const [invalidEmail, setInvalidEmail] = useState(false);
 
-  const onSubmit = (e: FormEvent<HTMLDivElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLDivElement>) => {
     e.preventDefault();
 
-    nameRef.current &&
-      nameRef.current.value.length === 0 &&
-      setInvalidName(true);
+    // Send a Post request to the
+    const inputName = nameRef.current?.value ?? '';
+    const inputEmail = emailRef.current?.value ?? '';
 
-    if (emailRef.current) {
-      const { value: emailInput } = emailRef.current;
-      if (!emailInput.includes('@') || !emailInput.includes('.com'))
-        setInvalidEmail(true);
+    if (inputName.length === 0) {
+      setInvalidName(true);
+      return;
+    }
+
+    if (!inputEmail.includes('@') || !inputEmail.includes('.com')) {
+      setInvalidEmail(true);
+      return;
+    }
+
+    const userDetails: UserDetails = {
+      name: inputName,
+      email: inputEmail,
+      message: messageRef.current?.value || '',
+    };
+
+    if (nameRef.current && emailRef.current && messageRef.current) {
+      nameRef.current.value = '';
+      messageRef.current.value = '';
+      emailRef.current.value = '';
+    }
+
+    try {
+      await axios.post(`/api/users`, userDetails);
+    } catch (error) {
+      throw error;
     }
   };
 
@@ -45,7 +76,7 @@ const EnquiryForm = () => {
         <FormControl isRequired isInvalid={invalidName}>
           <FormLabel> Name</FormLabel>
           <EnquiryFormInput reference={nameRef} placeholder="Name" />
-          <FormErrorMessage>Name is required.</FormErrorMessage>
+          <FormErrorMessage>Name must be longer.</FormErrorMessage>
         </FormControl>
 
         <FormControl isRequired isInvalid={invalidEmail}>
@@ -61,6 +92,7 @@ const EnquiryForm = () => {
         <FormControl>
           <FormLabel>Message</FormLabel>
           <Textarea
+            ref={messageRef}
             _placeholder={{ color: 'gray.600' }}
             _hover={{ borderColor: 'gray.800' }}
             focusBorderColor="gray.800"
