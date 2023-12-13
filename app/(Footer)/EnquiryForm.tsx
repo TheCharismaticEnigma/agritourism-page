@@ -13,7 +13,7 @@ import {
 import axios from 'axios';
 import { FormEvent, LegacyRef, useRef, useState } from 'react';
 
-interface UserDetails {
+export interface UserDetails {
   name: string;
   email: string;
   message: string;
