@@ -16,6 +16,10 @@ const NavBar = () => {
 
   return (
     <Flex
+      display={{
+        base: 'none',
+        sm: 'flex',
+      }}
       position={'fixed'}
       top={0}
       zIndex={100}

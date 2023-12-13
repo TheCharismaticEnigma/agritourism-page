@@ -120,12 +120,13 @@ const TestimonialCard = ({
           justifyContent={'space-around'}
           gap={8}
           padding={3}
-          maxWidth={{ md: '70%' }}
+          maxWidth={{ sm: '60%', md: '70%' }}
         >
           <Heading
             textTransform={'capitalize'}
             fontWeight={'900'}
             fontSize={'xx-large'}
+            textAlign={{ base: 'center', sm: 'left' }}
           >
             {heading}
           </Heading>

@@ -28,7 +28,7 @@ const HeroContent = () => {
       <Heading
         as={'h3'}
         color={'whiteAlpha.900'}
-        className="max-md:hidden mx-auto "
+        className="mx-auto"
         textAlign={'center'}
         fontSize={'large'}
         width={'90%'}

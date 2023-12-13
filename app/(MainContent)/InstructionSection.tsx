@@ -91,7 +91,7 @@ const InstructionsContainer = () => {
           width={'90%'}
           mx={'auto'}
           color={'green.600'}
-          textAlign={{ base: 'left', sm: 'left', md: 'center' }}
+          textAlign={'center'}
         >
           How It Works ?
         </Heading>
