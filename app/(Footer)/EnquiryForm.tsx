@@ -9,6 +9,7 @@ import {
   FormLabel,
   Input,
   Textarea,
+  Text,
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { FormEvent, LegacyRef, useRef, useState } from 'react';
@@ -49,6 +50,9 @@ const EnquiryForm = () => {
       email: inputEmail,
       message: messageRef.current?.value || '',
     };
+
+    const dialog = document.getElementById('my_modal_3') as HTMLDialogElement;
+    dialog.showModal();
 
     if (nameRef.current && emailRef.current && messageRef.current) {
       nameRef.current.value = '';
@@ -112,11 +116,34 @@ const EnquiryForm = () => {
           backgroundColor={'#00b894'}
           _hover={{ backgroundColor: '#00b89490' }}
           type="submit"
+          className="btn"
         >
           Submit
         </Button>
+
+        <DialogModal />
       </Flex>
     </Box>
+  );
+};
+
+const DialogModal = () => {
+  return (
+    <dialog id="my_modal_3" className="modal">
+      <div className="modal-box bg-gradient-to-tr from-green-200 to-gray-200">
+        <form method="dialog">
+          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+            ✕
+          </button>
+        </form>
+        <h3 className="font-bold text-lg text-center">
+          HURRRAY! THANK YOU FOR VISITING US!
+        </h3>
+        <p className="mt-3 py-4 text-lg text-center">
+          We have received your details and will get back to you soon.
+        </p>
+      </div>
+    </dialog>
   );
 };
 
