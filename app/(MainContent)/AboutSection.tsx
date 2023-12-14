@@ -90,6 +90,7 @@ const AboutSectionContent = () => {
           size={'lg'}
           colorScheme="whatsapp"
           color={'blackAlpha.800'}
+          whiteSpace={'normal'}
         >
           Mother Nature... Here I Come
         </Button>
