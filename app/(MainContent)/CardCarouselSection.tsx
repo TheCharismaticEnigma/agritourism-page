@@ -17,6 +17,13 @@ interface CarouselItem {
 const CardCarouselSection = () => {
   useEffect(() => {
     const carousel = document.querySelector('.carousel');
+    const carouselItems = document.querySelectorAll('.carousel-item');
+
+    const movingDistance =
+      (carousel &&
+        carouselItems &&
+        `-${carousel.clientWidth - carouselItems[0].clientWidth * 2}px`) ||
+      '-80%';
 
     const timeline = gsap.timeline();
     timeline.delay(1);
@@ -24,11 +31,11 @@ const CardCarouselSection = () => {
     timeline.fromTo(
       carousel,
       { translateX: '0%' },
-      { translateX: '-100%', duration: 6 }
+      { translateX: movingDistance, duration: 6 }
     );
     timeline.fromTo(
       carousel,
-      { translateX: '-100%' },
+      { translateX: movingDistance },
       { translateX: '0%', duration: 6 }
     );
     timeline.repeat(-1);
@@ -90,8 +97,11 @@ const CardCarouselSection = () => {
           <ActionButton />
         </Flex>
 
-        <Box className="flex-1" overflow={'hidden'}>
-          <div className="carousel carousel-center w-full p-4 space-x-4 overflow-visible">
+        <Box id="card-carousel-wrapper" className="flex-1" overflow={'hidden'}>
+          <div
+            id="card-carousel"
+            className="carousel carousel-center w-fit p-4 space-x-4 overflow-visible"
+          >
             {sources.map(({ source, state }, index) => (
               <CarouselItem key={state} source={source} state={state} />
             ))}
