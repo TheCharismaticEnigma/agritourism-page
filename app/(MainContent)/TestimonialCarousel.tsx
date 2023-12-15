@@ -19,29 +19,77 @@ interface TestimonialCardData {
 
 const TestimonialCarousel = () => {
   useEffect(() => {
-    const carouselItemCount = 3;
-    const container = document.querySelector('.carousel-wrapper');
+    // Indicator Box Backgrounds
+    const normalBg = '#12121270';
+    const activeBg = '#121212';
 
+    const carouselItemCount = 3;
+    const animationDelay = 8;
+    const animationDuration = 2;
+
+    const container = document.querySelector('.carousel-wrapper');
+    const boxes = document.querySelectorAll('.indicator-box');
     const timeline = gsap.timeline();
+
     timeline.set(container, { translateX: 0, duration: 0 });
 
+    boxes.forEach((box, index) =>
+      timeline.set(box, {
+        backgroundColor: `${(index === 0 && activeBg) || normalBg}`,
+        duration: 0,
+        delay: 0,
+      })
+    );
+
+    // Forward animation (0-50%)
+
     for (let i = 1; i < carouselItemCount; i++) {
-      timeline.fromTo(
-        container,
-        { translateX: `-${(i - 1) * 100}%` },
-        { translateX: `-${i * 100}%`, duration: 2, delay: 8 }
-      );
+      timeline
+        .fromTo(
+          container,
+          { translateX: `-${(i - 1) * 100}%` },
+          {
+            translateX: `-${i * 100}%`,
+            duration: animationDuration,
+            delay: animationDelay,
+          }
+        )
+        .to(boxes[i - 1], {
+          backgroundColor: normalBg,
+          duration: 0,
+          delay: 0,
+        })
+        .to(boxes[i], {
+          backgroundColor: activeBg,
+          delay: 0,
+        });
     }
+
+    // Backward Animation Logic (50-100%)
 
     for (let i = carouselItemCount - 1; i > 0; i--) {
-      timeline.fromTo(
-        container,
-        { translateX: `-${i * 100}%` },
-        { translateX: `-${(i - 1) * 100}%`, duration: 2, delay: 8 }
-      );
+      timeline
+        .fromTo(
+          container,
+          { translateX: `-${i * 100}%` },
+          {
+            translateX: `-${(i - 1) * 100}%`,
+            duration: animationDuration,
+            delay: animationDelay,
+          }
+        )
+        .to(boxes[i], {
+          backgroundColor: normalBg,
+          delay: 0,
+          duration: 0,
+        })
+        .to(boxes[i - 1], {
+          backgroundColor: activeBg,
+          delay: 0,
+        });
     }
 
-    timeline.repeat(-1).repeatDelay(8);
+    timeline.repeat(-1).repeatDelay(animationDelay);
   }, []);
 
   const cardData: TestimonialCardData[] = [
@@ -73,6 +121,12 @@ const TestimonialCarousel = () => {
       width={'100%'}
       className="shadow-md shadow-gray-300 rounded-md"
       overflow={'hidden'}
+      direction={'column'}
+      gap={{
+        base: '3',
+        md: '6',
+      }}
+      p={1}
     >
       <Flex className="carousel-wrapper" width={'100%'} height={'100%'}>
         {cardData.map(({ data, heading, location, name, text }) => (
@@ -86,6 +140,12 @@ const TestimonialCarousel = () => {
               text,
             }}
           />
+        ))}
+      </Flex>
+
+      <Flex gap={10} alignSelf={'center'} mb={3}>
+        {[1, 2, 3].map((value) => (
+          <IndicatorBox key={value} value={value} />
         ))}
       </Flex>
     </Flex>
@@ -170,6 +230,25 @@ const PersonInfo = ({
         <Text fontSize={'large'}>{location}</Text>
       </Box>
     </Flex>
+  );
+};
+
+const IndicatorBox = ({ value }: { value: number }) => {
+  return (
+    <Text
+      className="indicator-box"
+      borderRadius={'50%'}
+      backgroundColor={'#12121270'}
+      color={'white'}
+      border={'1px solid transparent'}
+      width={'2rem'}
+      height={'2rem'}
+      display={'flex'}
+      justifyContent={'center'}
+      alignItems={'center'}
+    >
+      {value}
+    </Text>
   );
 };
 
