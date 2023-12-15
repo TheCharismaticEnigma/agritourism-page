@@ -15,7 +15,7 @@ const TestimonialSection = () => {
         gap={8}
         alignItems={'center'}
       >
-        <Heading fontSize={'xxx-large'}>
+        <Heading textAlign={'center'} fontSize={'xxx-large'}>
           They <HeadingSpan content="trust" /> Us
         </Heading>
 

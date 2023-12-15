@@ -29,7 +29,7 @@ const TestimonialCarousel = () => {
       timeline.fromTo(
         container,
         { translateX: `-${(i - 1) * 100}%` },
-        { translateX: `-${i * 100}%`, duration: 2, delay: 2 }
+        { translateX: `-${i * 100}%`, duration: 2, delay: 8 }
       );
     }
 
@@ -37,11 +37,11 @@ const TestimonialCarousel = () => {
       timeline.fromTo(
         container,
         { translateX: `-${i * 100}%` },
-        { translateX: `-${(i - 1) * 100}%`, duration: 2, delay: 2 }
+        { translateX: `-${(i - 1) * 100}%`, duration: 2, delay: 8 }
       );
     }
 
-    timeline.repeat(-1).repeatDelay(1);
+    timeline.repeat(-1).repeatDelay(8);
   }, []);
 
   const cardData: TestimonialCardData[] = [
@@ -131,7 +131,7 @@ const TestimonialCard = ({
             {heading}
           </Heading>
 
-          <Text fontSize={'x-large'} textAlign={'center'}>
+          <Text fontSize={{ sm: 'large', md: 'x-large' }} textAlign={'center'}>
             {`"${text}"`}
           </Text>
 

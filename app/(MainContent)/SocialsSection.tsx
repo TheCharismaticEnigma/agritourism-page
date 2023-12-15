@@ -1,4 +1,4 @@
-import { Flex, Heading, Stack } from '@chakra-ui/react';
+import { Flex, Heading, Stack, Box } from '@chakra-ui/react';
 import { SocialIcon } from 'react-social-icons';
 
 interface SocialData {
@@ -24,15 +24,22 @@ const SocialsSection = () => {
         textTransform={'capitalize'}
         color={'blackAlpha.800'}
         fontSize={'xx-large'}
+        textAlign={'center'}
       >
         Connect With Us
       </Heading>
 
-      <Stack direction={'row'} spacing={10} wrap={'wrap'}>
+      <Flex
+        direction={'row'}
+        justifyContent={'center'}
+        gap={10}
+        wrap={'wrap'}
+        p={1}
+      >
         {socialsData.map(({ network, url }) => (
           <SocialIcon key={url} target="_blank" network={network} url={url} />
         ))}
-      </Stack>
+      </Flex>
     </Flex>
   );
 };
