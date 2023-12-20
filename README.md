@@ -12,7 +12,8 @@
     Styling: 'Tailwind-CSS', 
     TypeChecking: "Typescript",
     BuildTool: "Vite",
-    Deployment: "Vercel", 
+    Deployment: "Vercel & AWS S3 Service",
+    ContinuousDevelopment: "Github Actions w/ AWS"
    },
 ```
 
