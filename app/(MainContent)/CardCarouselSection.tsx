@@ -39,6 +39,17 @@ const CardCarouselSection = () => {
       { translateX: '0%', duration: 6 }
     );
     timeline.repeat(-1);
+
+    // Pause animation when cursor enters wrapper and vice-versa
+    const wrapper = document.getElementById('carousel-wrapper');
+
+    wrapper?.addEventListener('mouseover', () => {
+      timeline.pause();
+    });
+
+    wrapper?.addEventListener('mouseleave', () => {
+      timeline.resume();
+    });
   }, []);
 
   const sources: CarouselItem[] = [
@@ -97,9 +108,9 @@ const CardCarouselSection = () => {
           <ActionButton />
         </Flex>
 
-        <Box id="card-carousel-wrapper" className="flex-1" overflow={'hidden'}>
+        <Box id="carousel-wrapper" className="flex-1" overflow={'hidden'}>
           <div
-            id="card-carousel"
+            id="carousel-container"
             className="carousel carousel-center w-fit p-4 space-x-4 overflow-visible"
           >
             {sources.map(({ source, state }, index) => (
@@ -145,6 +156,7 @@ const CarouselItem = ({ source, state }: CarouselItem) => {
       _hover={{
         transform: 'scale(1.025)',
       }}
+      draggable={'true'}
       className="carousel-item rounded-box w-[300px] h-[350px] shadow-sm shadow-gray-900 "
     >
       <Image
@@ -155,6 +167,7 @@ const CarouselItem = ({ source, state }: CarouselItem) => {
       />
 
       <Text
+        pointerEvents={'none'}
         fontWeight={'300'}
         color={'white'}
         position={'absolute'}
